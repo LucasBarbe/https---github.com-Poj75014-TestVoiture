@@ -30,6 +30,14 @@ public class CarControllerNV2 : MonoBehaviour {
             Front_Left.attachedRigidbody.AddForce(-transform.up * m_Downforce * Front_Left.attachedRigidbody.velocity.magnitude);
     }
 
+    private void FixedUpdate()
+    {
+        Vector3 veloc = GetComponent<Rigidbody>().velocity;
+        if(veloc.magnitude > 200 / 3.6f)
+        {
+            GetComponent<Rigidbody>().velocity = veloc.normalized * 200 / 3.6f;
+        }
+    }
 
     void Update () {
 
